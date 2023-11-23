@@ -8,6 +8,9 @@ function solution(number, limit, power) {
       if (i % j == 0) {
         temp+=2;
       }
+      if(temp>limit+1){
+        break;
+      }
     }
     if(Math.sqrt(i)==Math.floor(Math.sqrt(i))){
       temp--;
