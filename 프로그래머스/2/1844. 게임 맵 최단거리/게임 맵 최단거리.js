@@ -1,23 +1,30 @@
+let desty;
+let destx;
+let xarr = [1, 0, -1, 0];
+let yarr = [0, -1, 0, 1];
+let queue = [];
 function solution(maps) {
-    const dx = [0, 1, 0, -1];
-    const dy = [1, 0, -1, 0];
-    const xLen = maps.length;
-    const yLen = maps[0].length;
-    const goalX = xLen - 1;
-    const goalY = yLen - 1;
-    const queue = [];       
-    queue.push([0, 0, 1]);
-    while(queue.length) {
-        const [curX, curY, move] = queue.shift();
-        if(curX === goalX && curY === goalY) return move;
-        for(let i = 0; i < 4; i++) {
-            const nx = curX + dx[i];
-            const ny = curY + dy[i];
-            if(nx >= 0 && nx < xLen && ny >= 0 && ny < yLen && maps[nx][ny] === 1) {
-                queue.push([nx, ny, move + 1]);
-                maps[nx][ny] = 0;
-            }
-        }
-    } 
-    return -1;
+  desty = maps.length - 1;
+  destx = maps[0].length - 1;
+  queue.push([0, 0, 1]);
+  maps[0][0]=0;
+  while (queue.length != 0) {
+    let [y, x, deep] = queue.shift();
+    if (x == destx && y == desty) {
+      return deep;
+    }
+    for (let i = 0; i < 4; i++) {
+      if (
+        y + yarr[i] >= 0 &&
+        y + yarr[i] <= desty &&
+        x + xarr[i] >= 0 &&
+        x + xarr[i] <= destx &&
+        maps[y + yarr[i]][x + xarr[i]] == 1
+      ) {
+        maps[y + yarr[i]][x + xarr[i]] = 0;
+        queue.push([y + yarr[i], x + xarr[i], deep + 1]);
+      }
+    }
+  }
+  return -1;
 }
