@@ -1,7 +1,4 @@
 function solution(triangle) {
-  // 0
-  // 1 2
-  // 100 0 1
   console.log(triangle);
   for (let i = 1; i < triangle.length; i++) {
     for (let j = 0; j < triangle[i].length; j++) {
