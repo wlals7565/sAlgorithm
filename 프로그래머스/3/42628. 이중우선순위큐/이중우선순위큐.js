@@ -145,16 +145,6 @@ function solution(operations) {
   }
   // 후처리
   let maxValue = maxHeap.pop()
-  while (maxHeapMap.get(maxValue)) {
-    console.log(maxValue)
-    maxHeapMap.set(maxValue, (maxHeapMap.get(maxValue)-1))
-    maxValue = maxHeap.pop();
-  }
   let minValue = minHeap.pop()
-  while (minHeapMap.get(minValue)) {
-    console.log(minValue)
-    minHeapMap.set(minValue, (minHeapMap.get(minValue)-1))
-    minValue = minHeap.pop();
-  }
   return [maxValue, -minValue]
 }
